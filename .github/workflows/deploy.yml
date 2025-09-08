@@ -3,11 +3,13 @@ name: deploy-book
 on:
   push:
     branches:
-      - main   # build book on every push to main
+      - main
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   # 👈 allow pushing to gh-pages
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
