@@ -1,11 +1,13 @@
-# Welcome to your Jupyter Book
+# Deep Learning Portfolio
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Welcome to my **Deep Learning Portfolio**, a collection of projects, lectures, and laboratory work that demonstrate my journey in machine learning and AI.  
 
-Check out the content pages bundled with this sample book to see more.
+This book is organized into sections to make it easy to explore different aspects of my work:
+
+- **Projects** → end-to-end deep learning applications and experiments  
+- **Lectures** → study notes, concepts, and key ideas in AI and neural networks  
+- **Laboratories** → hands-on coding exercises, model implementations, and practice tasks  
+
+You can navigate through the sections using the sidebar or the table of contents below.  
 
 ```{tableofcontents}
-```
