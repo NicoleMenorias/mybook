@@ -8,8 +8,7 @@ parts:
 
   - caption: Laboratories
     chapters:
-      - file: Laboratories/laboratory1
-      - file: Laboratories/laboratory2
+      - file: Laboratories/laboratory5
 
   - caption: Projects
     chapters:
