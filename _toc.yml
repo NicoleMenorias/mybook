@@ -1,18 +1,16 @@
-   format: jb-book
-   root: intro
+format: jb-book
+root: intro
 
-   parts:
-     - caption: Projects
-       chapters:
-         - file: projects/project1
-         - file: projects/project2
+parts:
+  - caption: Lectures
+    chapters:
+      - file: Lectures/lecture1
 
-     - caption: Lectures
-       chapters:
-         - file: lectures/lecture1
-         - file: lectures/lecture2
+  - caption: Laboratories
+    chapters:
+      - file: Laboratories/laboratory1
+      - file: Laboratories/laboratory2
 
-     - caption: Laboratories
-       chapters:
-         - file: laboratories/lab1
-         - file: laboratories/lab2
+  - caption: Projects
+    chapters:
+      - file: Projects/project1
