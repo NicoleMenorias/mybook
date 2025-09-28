@@ -1,3 +1,10 @@
 jupyter-book
 matplotlib
 numpy
+torch
+pandas
+scikit-learn
+seaborn
+scipy
+statsmodels
+
