@@ -1,5 +1,7 @@
 # Deep Learning Portfolio
 
+**Owner: Nicole S. Menorias**
+
 Welcome to my **Deep Learning Portfolio**, a collection of projects, lectures, and laboratory work that demonstrate my journey in machine learning and AI.  
 
 This book is organized into sections to make it easy to explore different aspects of my work:
