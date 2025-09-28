@@ -983,43 +983,90 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [100/1000], Loss: 176.4633
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [100/1000], Loss: 1144.8914
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [200/1000], Loss: 5611.1294
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [200/1000], Loss: 18771.7520
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [300/1000], Loss: 16659.4062
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [300/1000], Loss: 3287.1577
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [400/1000], Loss: 250.5667
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch [400/1000], Loss: 465.9929
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">epochs</span> <span class="o">=</span> <span class="mi">1000</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="k">for</span> <span class="n">batch_X</span><span class="p">,</span> <span class="n">batch_y</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="c1"># Forward pass</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>         <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">batch_X</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">batch_y</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">12</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">12</span>     <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="c1"># Print loss every 100 epochs</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">if</span> <span class="p">(</span><span class="n">epoch</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">100</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
 
-<span class="nn">File ~\anaconda3\Lib\site-packages\torch\utils\data\dataloader.py:704,</span> in <span class="ni">_BaseDataLoaderIter.__next__</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">703</span> <span class="k">def</span> <span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">704</span>     <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">profiler</span><span class="o">.</span><span class="n">record_function</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_profile_name</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">705</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sampler_iter</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">706</span>             <span class="c1"># TODO(https://github.com/pytorch/pytorch/issues/76750)</span>
-<span class="g g-Whitespace">    </span><span class="mi">707</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_reset</span><span class="p">()</span>  <span class="c1"># type: ignore[call-arg]</span>
+<span class="nn">File ~\anaconda3\Lib\site-packages\torch\optim\optimizer.py:493,</span> in <span class="ni">Optimizer.profile_hook_step.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">488</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">489</span>             <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">490</span>                 <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">func</span><span class="si">}</span><span class="s2"> must return None or a tuple of (new_args, new_kwargs), but got </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s2">.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">491</span>             <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">493</span> <span class="n">out</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span> <span class="bp">self</span><span class="o">.</span><span class="n">_optimizer_step_code</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span> <span class="c1"># call optimizer step post hooks</span>
 
-<span class="nn">File ~\anaconda3\Lib\site-packages\torch\autograd\profiler.py:757,</span> in <span class="ni">record_function.__exit__</span><span class="nt">(self, exc_type, exc_value, traceback)</span>
-<span class="g g-Whitespace">    </span><span class="mi">752</span>     <span class="bp">self</span><span class="o">.</span><span class="n">record</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">profiler</span><span class="o">.</span><span class="n">_record_function_enter_new</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">753</span>         <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">args</span>
-<span class="g g-Whitespace">    </span><span class="mi">754</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">755</span>     <span class="k">return</span> <span class="bp">self</span>
-<span class="ne">--&gt; </span><span class="mi">757</span> <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">exc_value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">traceback</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">758</span>     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_callbacks_on_exit</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">759</span>         <span class="k">return</span>
+<span class="nn">File ~\anaconda3\Lib\site-packages\torch\optim\optimizer.py:91,</span> in <span class="ni">_use_grad_for_differentiable.&lt;locals&gt;._use_grad</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span>     <span class="n">torch</span><span class="o">.</span><span class="n">set_grad_enabled</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">defaults</span><span class="p">[</span><span class="s2">&quot;differentiable&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span>     <span class="n">torch</span><span class="o">.</span><span class="n">_dynamo</span><span class="o">.</span><span class="n">graph_break</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">91</span>     <span class="n">ret</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">93</span>     <span class="n">torch</span><span class="o">.</span><span class="n">_dynamo</span><span class="o">.</span><span class="n">graph_break</span><span class="p">()</span>
+
+<span class="nn">File ~\anaconda3\Lib\site-packages\torch\optim\sgd.py:125,</span> in <span class="ni">SGD.step</span><span class="nt">(self, closure)</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span> <span class="n">momentum_buffer_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Tensor</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span> <span class="n">has_sparse_grad</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_init_group</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span>     <span class="n">group</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">grads</span><span class="p">,</span> <span class="n">momentum_buffer_list</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span> <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">125</span> <span class="n">sgd</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">126</span>     <span class="n">params</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">127</span>     <span class="n">grads</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">128</span>     <span class="n">momentum_buffer_list</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">129</span>     <span class="n">weight_decay</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;weight_decay&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>     <span class="n">momentum</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;momentum&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span>     <span class="n">lr</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;lr&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">132</span>     <span class="n">dampening</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;dampening&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span>     <span class="n">nesterov</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;nesterov&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span>     <span class="n">maximize</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;maximize&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">135</span>     <span class="n">has_sparse_grad</span><span class="o">=</span><span class="n">has_sparse_grad</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span>     <span class="n">foreach</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;foreach&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">137</span>     <span class="n">fused</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;fused&quot;</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">138</span>     <span class="n">grad_scale</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;grad_scale&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">139</span>     <span class="n">found_inf</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;found_inf&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">140</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="k">if</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;momentum&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">143</span>     <span class="c1"># update momentum_buffers in state</span>
+<span class="g g-Whitespace">    </span><span class="mi">144</span>     <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">momentum_buffer</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">params</span><span class="p">,</span> <span class="n">momentum_buffer_list</span><span class="p">):</span>
+
+<span class="nn">File ~\anaconda3\Lib\site-packages\torch\optim\sgd.py:300,</span> in <span class="ni">sgd</span><span class="nt">(params, d_p_list, momentum_buffer_list, has_sparse_grad, foreach, fused, grad_scale, found_inf, weight_decay, momentum, lr, dampening, nesterov, maximize)</span>
+<span class="g g-Whitespace">    </span><span class="mi">297</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">298</span>     <span class="n">func</span> <span class="o">=</span> <span class="n">_single_tensor_sgd</span>
+<span class="ne">--&gt; </span><span class="mi">300</span> <span class="n">func</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">301</span>     <span class="n">params</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">302</span>     <span class="n">d_p_list</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">303</span>     <span class="n">momentum_buffer_list</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">304</span>     <span class="n">weight_decay</span><span class="o">=</span><span class="n">weight_decay</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span>     <span class="n">momentum</span><span class="o">=</span><span class="n">momentum</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span>     <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span>     <span class="n">dampening</span><span class="o">=</span><span class="n">dampening</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span>     <span class="n">nesterov</span><span class="o">=</span><span class="n">nesterov</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>     <span class="n">has_sparse_grad</span><span class="o">=</span><span class="n">has_sparse_grad</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="n">maximize</span><span class="o">=</span><span class="n">maximize</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">311</span>     <span class="n">grad_scale</span><span class="o">=</span><span class="n">grad_scale</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">312</span>     <span class="n">found_inf</span><span class="o">=</span><span class="n">found_inf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">313</span> <span class="p">)</span>
+
+<span class="nn">File ~\anaconda3\Lib\site-packages\torch\optim\sgd.py:353,</span> in <span class="ni">_single_tensor_sgd</span><span class="nt">(params, grads, momentum_buffer_list, grad_scale, found_inf, weight_decay, momentum, lr, dampening, nesterov, maximize, has_sparse_grad)</span>
+<span class="g g-Whitespace">    </span><span class="mi">350</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">351</span>         <span class="n">grad</span> <span class="o">=</span> <span class="n">buf</span>
+<span class="ne">--&gt; </span><span class="mi">353</span> <span class="n">param</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">grad</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=-</span><span class="n">lr</span><span class="p">)</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
